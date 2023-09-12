@@ -1,0 +1,75 @@
+EMPLOYMENT FILTER:
+
+TS:
+
+ // @ts-ignore
+filterWorkEmploymentStatus: string;
+actualWorkStatusValue: string = '';
+restOpenToWorkFilter: User[] = [];
+
+this.filterWorkEmploymentStatus = 'all';
+
+
+  openToWorkFilter(users: User[]) {
+    const actualFilteredUsers: User[] = [];
+    this.restOpenToWorkFilter = [];
+
+    for (let user of users) {
+      if (this.filterWorkEmploymentStatus === "open" && user.workStatus === true) {
+        actualFilteredUsers.push(user);
+      }
+      if (this.filterWorkEmploymentStatus === "closed" && user.workStatus === false) {
+        actualFilteredUsers.push(user);
+      }
+      if (this.filterWorkEmploymentStatus === "all") {
+        actualFilteredUsers.push(user)
+      }
+    }
+    if (this.filterWorkEmploymentStatus === "open") {
+      this.actualWorkStatusValue = "true"
+    } else if (this.filterWorkEmploymentStatus === "closed") {
+      this.actualWorkStatusValue = "false"
+    } else {
+      this.actualWorkStatusValue = "all"
+    }
+    this.restOpenToWorkFilter = this.verifiedAndUsersOnly
+      .filter(user => !actualFilteredUsers.includes(user));
+    return actualFilteredUsers;
+  }
+
+ filteredUsers = this.openToWorkFilter(filteredUsers);
+
+  if (this.actualWorkStatusValue !== "all") {
+         if (this.restOpenToWorkFilter.includes(user)) {
+           user.outOfFilters.push(this.actualWorkStatusValue);
+         }
+       }
+
+this.filterWorkEmploymentStatus = 'all';
+
+
+HTML:
+
+    <p class="lead mt-4 border-bottom lead-bold">Seeking employment</p>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios0" value="all"
+                  checked [(ngModel)]="filterWorkEmploymentStatus" (ngModelChange)="onWorkStatusChange()">
+                <label class="form-check-label" for="exampleRadios0">
+                  All
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="open"
+                  [(ngModel)]="filterWorkEmploymentStatus" (ngModelChange)="onWorkStatusChange()">
+                <label class="form-check-label" for="exampleRadios1">
+                  True
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="closed"
+                  [(ngModel)]="filterWorkEmploymentStatus" (ngModelChange)="onWorkStatusChange()">
+                <label class="form-check-label" for="exampleRadios2">
+                  False
+                </label>
+              </div>
+

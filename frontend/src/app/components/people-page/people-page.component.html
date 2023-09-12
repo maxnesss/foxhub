@@ -1,0 +1,205 @@
+<app-header></app-header>
+
+<app-back-to-top-btn></app-back-to-top-btn>
+
+<!-- people filter -->
+
+<div class="container">
+
+  <div class="py-5 text-center">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-4 page-header">They did it. From Zero to <span>Coding
+        Hero</span> in a couple of months!</h1>
+    <h2 class="display-5 fw-bold text-body-emphasis mb-4">Our conquerors who learned and proved to be efficient
+      developers, in a record time! Juniors, learners, great team members, ready to join your team and thrive in the new
+      carrier.</h2>
+  </div>
+
+  <!-- cookies -->
+
+  <div *ngIf="showCookiePopup" class="cookie-popup">
+    <p>We use cookies to improve your experience. By using our site, you agree to our use of cookies.</p>
+    <button (click)="acceptCookies()">Accept</button>
+    <button (click)="declineCookies()">Decline</button>
+  </div>
+
+  <div class="row my-4 mobile-row">
+    <div class="col-3 filter-mobile">
+
+      <div id="accordion mb-4">
+        <div class="card mb-4">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+              aria-controls="collapseOne">Filter </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+
+              <p class="lead mt-4">
+                <button class="btn btn-outline-primary" (click)="clearAllFilters()">Clear filters</button>
+              </p>
+
+              <p class="lead mt-4 border-bottom lead-bold">Technology</p>
+              <ng-container *ngFor="let tech of usedTechnologies">
+                <button class="dropdown-item"
+                  [ngStyle]="{ 'background-color': isSelectedTech(tech) ? '#dbdbdb' : 'transparent' }"
+                  (click)="toggleTechSelection(tech)">{{ tech.name }}</button>
+              </ng-container>
+
+              <p class="lead mt-4 border-bottom lead-bold">Languages</p>
+              <ng-container *ngFor="let lang of usedLanguages">
+                <button class="dropdown-item"
+                  [ngStyle]="{ 'background-color': isSelectedLang(lang) ? '#dbdbdb' : 'transparent' }"
+                  (click)="toggleLangSelection(lang)">{{ lang.name }}</button>
+              </ng-container>
+
+              <p class="lead mt-4 border-bottom lead-bold">Locations</p>
+              <ng-container *ngFor="let location of usedLocations">
+                <button class="dropdown-item"
+                  [ngStyle]="{ 'background-color': isSelectedLocation(location) ? '#dbdbdb' : 'transparent' }"
+                  (click)="toggleLocationSelection(location)">{{ location.name }}</button>
+              </ng-container>
+
+              <p class="lead mt-4 border-bottom lead-bold">16 Personalities <a href="/16personalities"><i
+                    class="bi bi-question-circle" title="True Color Personality Test"></i></a></p>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary dropdown-toggle personality-select"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Selected Personality
+                </button>
+                <div class="dropdown-menu">
+                  <ng-container *ngFor="let personality of usedPersonalities">
+                    <button class="dropdown-item" (click)="addToPersonalitiesList(personality.name)">{{ personality.type
+                      }} - {{ personality.name }}</button>
+                  </ng-container>
+                </div>
+              </div>
+
+              <p class="lead mt-4 border-bottom lead-bold">Color Personality <a href="/color-personality-test"><i
+                    class="bi bi-question-circle" title="True Color Personality Test"></i></a></p>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary dropdown-toggle personality-select"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Selected Personality
+                </button>
+                <div class="dropdown-menu">
+                  <ng-container *ngFor="let colorPersonality of usedColorPersonalities">
+                    <button class="dropdown-item" (click)="addToColorPersonalitiesList(colorPersonality.name)">
+                      {{ colorPersonality.name }}</button>
+                  </ng-container>
+                </div>
+              </div>
+
+              <p class="lead mt-4 border-bottom lead-bold">Spirit Animal <a href="/spirit-animal"><i
+                    class="bi bi-question-circle" title="Spirit Animal Test"></i></a></p>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary dropdown-toggle personality-select"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Selected Animal
+                </button>
+                <div class="dropdown-menu">
+                  <ng-container *ngFor="let spiritAnimal of usedSpiritAnimals">
+                    <button class="dropdown-item" (click)="addToSpiritAnimalsList(spiritAnimal.name)">
+                      {{ spiritAnimal.name }}</button>
+                  </ng-container>
+                </div>
+              </div>
+
+              <p class="lead mt-4 border-bottom lead-bold">Preferred work option</p>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleWorkRadios" id="exampleWorkRadios0"
+                  value="all" checked [(ngModel)]="filterWorkPrefermentStatus" (ngModelChange)="onWorkStatusChange()">
+                <label class="form-check-label" for="exampleWorkRadios0">
+                  All
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleWorkRadios" id="exampleWorkRadios1"
+                  value="combined" [(ngModel)]="filterWorkPrefermentStatus" (ngModelChange)="onWorkStatusChange()">
+                <label class="form-check-label" for="exampleWorkRadios1">
+                  Combined
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleWorkRadios" id="exampleWorkRadios2"
+                  value="office" [(ngModel)]="filterWorkPrefermentStatus" (ngModelChange)="onWorkStatusChange()">
+                <label class="form-check-label" for="exampleWorkRadios2">
+                  Office
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleWorkRadios" id="exampleWorkRadios3"
+                  value="remote" [(ngModel)]="filterWorkPrefermentStatus" (ngModelChange)="onWorkStatusChange()">
+                <label class="form-check-label" for="exampleWorkRadios3">
+                  Remote
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-8 ml-2">
+
+      <app-people-page-card class="my-4" *ngFor="let user of users" [user]="user"></app-people-page-card>
+
+      <ng-container *ngFor="let user of nonFilteredUsers">
+        <ng-container *ngIf="user.outOfFilters?.length===1">
+          <app-people-page-card [user]="user"></app-people-page-card>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngFor="let user of nonFilteredUsers">
+        <ng-container *ngIf="user.outOfFilters?.length===2">
+          <app-people-page-card [user]="user"></app-people-page-card>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngFor="let user of nonFilteredUsers">
+        <ng-container *ngIf="user.outOfFilters?.length===3">
+          <app-people-page-card [user]="user"></app-people-page-card>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngFor="let user of nonFilteredUsers">
+        <ng-container *ngIf="user.outOfFilters?.length===4">
+          <app-people-page-card [user]="user"></app-people-page-card>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngFor="let user of filteredUsersRest">
+        <app-people-page-card [user]="user"></app-people-page-card>
+      </ng-container>
+
+    </div>
+  </div>
+</div>
+
+<!-- intro section -->
+
+<div class="container col-xxl-8 px-4 py-2">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-2">
+
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 page-header">Looking for a <span>Support</span>?</h1>
+      <br>
+      <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">We got you covered!</h2>
+      <p class="lead">Explore world of remarkable individuals, each with their unique story and
+        expertise. Witness the <b>passion</b> that drives them, the <b>projects</b> that define them, and the
+        <b>accomplishments</b>
+        that set them apart.
+      </p>
+      <p class="lead">Whether you seek inspiration, mentorship, or the perfect addition to your team, our
+        user directory is your <b>gateway</b> to connecting with the brightest stars of the tech universe. </p>
+    </div>
+
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img ngSrc="/assets/img/peopleSearch.png" class="d-block img-fluid" alt="Meeting" width="700" height="500"
+        loading="lazy">
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

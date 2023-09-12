@@ -1,0 +1,72 @@
+.post-likes p,
+.post-comments p {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.post-comments-toggler:hover,
+.post-likes-toggler:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(0eg);
+    }
+
+    75% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.post-author-image img {
+    border-radius: 50%;
+}
+
+.flex-comment {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+i {
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: transform 0.5s ease-in-out;
+}
+
+.bi-heart {
+    color: black;
+}
+
+.bi-heart-fill {
+    color: red;
+}
+
+.post-likes-btn {
+    border: none;
+    background: none;
+}
+
+.rotate-up {
+    transform: rotate(180deg);
+}
+
+.rotate-down {
+    transform: rotate(0deg);
+}

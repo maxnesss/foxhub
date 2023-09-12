@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row" *ngIf="userRole==='ADMIN'">
+    <div class="col-md-12">
+      <div class="card mb-2">
+        <div class="card-header">
+          <h3 class="card-title">Make a Post</h3>
+        </div>
+        <div class="card-body">
+          <form (submit)="addPost({text: postText.value, parentPostId: null}); postText.value = ''">
+            <div class="form-group">
+              <textarea class="form-control preformatted-text" rows="4" placeholder="Type your post here..." #postText
+                required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Post</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="posts-container">
+        <div class="card-header post-header">
+          <h3 class="card-title">News Feed</h3>
+        </div>
+        <div class="card mb-3" *ngFor="let post of posts">
+          <app-post [post]="post" [currentUserId]="currentUserId" [replies]="getReplies(post.id!)"
+            [activePost]="activePost" (addPost)="addPost($event)" (updatePost)="updatePost($event)"
+            (deletePost)="deletePost($event)" [userRole]="userRole"></app-post>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+a {
+    color: rgb(0, 0, 0);
+    font-size: 1.3rem; 
+}
+
+a:hover {
+    color: rgb(0, 127, 0);
+}
+
+.navbar-brand img:hover {
+    width: 35px;
+    height: 35px;
+} 

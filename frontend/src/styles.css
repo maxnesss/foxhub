@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+
+body, nav, a {
+  margin: 0;
+  padding: 0;
+}
+
+.page-header {
+  font-weight: bold;
+  font-size: 3.5rem;
+}
+
+h1 span,
+h2 span, 
+h3 span,
+h4 span {
+    color: rgb(0, 127, 0);
+}
+
+.btn-primary {
+  background-color: #007f00;
+  border: #003a00;
+  color: rgb(255, 255, 255);
+}
+
+.btn-primary:hover {
+  background-color: rgb(0, 90, 0);
+}
+
+.btn-primary:focus {
+  background-color: #007f00;
+}
+
+.btn-primary:active {
+  background-color: #007f00;
+}
+
+.btn-outline-primary:not([disabled]) {
+  border: 1px solid green;
+  color: green;
+}
+
+.btn-outline-primary:not([disabled]):hover {
+  background-color: green;
+  color: rgb(255, 255, 255);
+}
+
+.btn-outline-primary:not([disabled]):active {
+  background-color: #007f00;
+}
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-section.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-delay.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.preformatted-text {
+  white-space: pre-wrap;
+}
+
+.dropdown-toggle {
+  text-align: start;
+}
+
+.dropdown-toggle:hover {
+  background-color: #fff;
+  color: #007f00;
+  background: #fff;
+}
+
+.text-formated {
+  white-space: pre-wrap;
+}

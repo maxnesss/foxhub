@@ -1,0 +1,79 @@
+<app-header></app-header>
+
+<app-back-to-top-btn></app-back-to-top-btn>
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-3">
+  <div class="row align-items-center g-lg-5 py-3 mb-4">
+
+    <!-- left side (text and image) -->
+
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Login</h1>
+      <p class="lead">Enter the world of possibilities.</p>
+      <p class="lead">Connect with like-minded individuals, share your coding journey, collaborate on exciting
+        projects, and start your career.
+      </p>
+
+      <img ngSrc="/assets/img/login.png" class="d-block mx-lg-auto img-fluid" alt="Secure" width="300"
+
+        height="200" loading="lazy">
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+
+      <!-- right side (login form) -->
+
+      <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" *ngIf="!isLoggedIn" name="form"
+        (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+        <!-- email -->
+
+        <div class="form-floating mb-3 form-group">
+          <label for="floatingInput">Email address</label>
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email"
+            [(ngModel)]="form.email" required #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.errors }" />
+          <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
+            Email is required
+          </div>
+        </div>
+        <!-- password -->
+        <div class="form-floating mb-3 form-group">
+          <label for="floatingPassword">Password</label>
+          <input type="password" class="form-control" id="floatingPassword" placeholder="password" name="password"
+            [(ngModel)]="form.password" required minlength="6" #password="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && password.errors}" />
+          <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+            <div *ngIf="password.errors['required']">Password is required</div>
+            <div *ngIf="password.errors['minlength']">Password must be at least 6 characters</div>
+          </div>
+        </div>
+        <!-- submit button -->
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <!-- appendix text -->
+        <hr class="my-4">
+        <small class="text-body-secondary">Don't have an account?</small> <span><a routerLink="/register"
+            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Sign up
+            here.</a></span>
+        <br>
+        <small class="text-body-secondary">Forgot password?</small> <span><a routerLink="/reset-password"
+            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Reset
+            here.</a></span>
+
+        <div class="form-group">
+          <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+            Login failed: {{ errorMessage }}
+          </div>
+        </div>
+
+
+      </form >
+
+      <div class="alert alert-success" *ngIf="isLoggedIn">
+        Logged in as {{ userNickname }}.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

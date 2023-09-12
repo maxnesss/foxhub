@@ -1,0 +1,224 @@
+.qrModal-btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.qr-code {
+  margin-top: 10rem;
+}
+
+.profile-img {
+  margin: 1rem;
+}
+
+.profile-img:hover {
+  cursor: pointer;
+}
+
+.profile-img-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-img-label {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bolder;
+  shape-outside: circle(50%);
+  float: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.profile-img-container:hover .profile-img-label {
+  opacity: 1;
+  visibility: visible;
+}
+
+label {
+  font-size: small;
+  font-weight: bold;
+}
+
+ul li a {
+  color: rgb(207, 207, 207);
+  font-size: 1.5rem;
+}
+
+ul li a:hover {
+  transform: scale(1.5);
+}
+
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 1rem);
+}
+
+.userName-desktop {
+  display: block;
+}
+
+.userName-mobile {
+  display: none;
+}
+
+.container .links-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+  transition-duration: .3s;
+  /* animation: pop-btn .3s both ease-in-out .5s; */
+  position: relative;
+  left: -90px;
+  top: -20px;
+}
+
+@keyframes pop-btn {
+  0% {
+      transform: scale(0);
+  }
+
+  80% {
+      transform: scale(1.2);
+  }
+
+  100% {
+      transform: scale(1);
+  }
+}
+
+.container .links-btn .links-box {
+  width: 185px;
+  height: 150px;
+  opacity: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 230%;
+  right: -300px;
+  transform: translate(-50%, -50%);
+  transition-duration: .3s;
+  pointer-events: none;
+}
+
+.container .links-btn.active .links-box {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.container .links-btn .links-box a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f6f6f6;
+  font-size: 26px;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  left: 18px;
+  top: calc(75px - 50px/2);
+  box-shadow: 0 0 .5rem grey;
+  transition-duration: .3s;
+  text-decoration: none;
+  color: #111111;
+}
+
+.container .links-box a:hover {
+  transition-delay: initial !important;
+}
+
+.bi-facebook:hover {
+  color: #3b5998;
+}
+
+.bi-globe:hover {
+  color: #0d9c00;
+}
+
+.bi-linkedin:hover {
+  color: #0077b5;
+}
+
+.bi-instagram:hover {
+  color: #bc2a8d;
+}
+
+.bi-github:hover {
+  color: #272727;
+}
+
+.container .links-box.open {
+  opacity: 1;
+}
+
+.container .links-box.open a {
+  left: 60px;
+}
+
+.container .links-box.open a:nth-of-type(1) {
+  transform: rotate(-90deg) translateX(120px) rotate(90deg);
+  transition-delay: .1s;
+}
+
+.container .links-box.open a:nth-of-type(2) {
+  transform: rotate(-45deg) translateX(120px) rotate(45deg);
+  transition-delay: .1s;
+}
+
+.container .links-box.open a:nth-of-type(3) {
+  transform: rotate(0deg) translateX(120px) rotate(0deg);
+  transition-delay: .1s;
+}
+
+.container .links-box.open a:nth-of-type(4) {
+  transform: rotate(45deg) translateX(120px) rotate(-45deg);
+  transition-delay: .1s;
+}
+
+.container .links-box.open a:nth-of-type(5) {
+  transform: rotate(90deg) translateX(120px) rotate(-90deg);
+  transition-delay: .1s;
+}
+
+.green{
+  color: #0d9c00;
+}
+
+.red{
+  color: red;
+}
+
+.btn-outline-primary:disabled {
+  border: 1px solid grey;
+  color: grey;
+}
+
+@media (max-width: 768px) {
+  .userName-desktop {
+    display: none;
+  }
+
+  .userName-mobile {
+    display: block;
+    margin-top: 12rem;
+  }
+
+  .qr-code {
+    margin-top: 0;
+  }
+}

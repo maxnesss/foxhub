@@ -1,0 +1,118 @@
+.rounded-circle {
+    cursor: pointer;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #007f00;
+}
+
+.form-check input:hover,
+.form-check label:hover {
+    cursor: pointer;
+}
+
+.profile-button:focus {
+    background: rgb(0, 90, 0);
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: rgb(0, 90, 0);
+    box-shadow: none
+}
+
+.back:hover {
+    color: rgb(0, 90, 0);
+    cursor: pointer
+}
+
+.profile-delete-btn {
+    margin: 2rem;
+}
+
+.profile-delete-btn:active {
+    background: rgb(164, 0, 0);
+}
+
+.profile-delete-btn:focus {
+    background: rgb(164, 0, 0);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    width: 150%;
+    height: 500px;
+}
+
+@media (max-width: 768px) {
+
+    .modal-content {
+        width: 100%;
+        height: 500px;
+        transform: translate(-50%, 20%);
+    }
+
+}
+
+.modal-picture,
+.modal-save {
+    height: 250px;
+}
+
+.modal-delete {
+    height: 300px;
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience {
+    border-radius: 5px;
+}
+
+.add-experience:hover {
+    background: #007f00;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #007f00;
+}
+
+.modal-header {
+    border: none;
+}
+
+.allTechnologies {
+    max-height: 230px;
+    overflow: auto;
+}
+
+.myTechnologies {
+    max-height: 150px;
+    overflow: auto;
+}
+
+/* Works for Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Works for Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.dropdown-toggle {
+    text-align: start;
+}
+
+.dropdown-toggle:hover {
+    background-color: #fff;
+    color: #007f00;
+}

@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+
+    .text-center img {
+        width: 200px;
+        height: 200px;
+    }
+
+}

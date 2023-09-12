@@ -1,0 +1,17 @@
+.text-left a {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-left a:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.text-left a img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}

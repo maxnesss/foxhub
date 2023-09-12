@@ -1,0 +1,512 @@
+<app-header></app-header>
+
+<app-back-to-top-btn></app-back-to-top-btn>
+
+<div class="container rounded bg-white mt-2 mb-5">
+
+  <h1 class="display-5 my-4 text-center page-header">Profile Settings</h1>
+
+  <!--  progress bar   -->
+  <div class="position-relative mt-5">
+    <div class="progress-label position-absolute w-100 text-center" style="top: -25px;"> <span>Progress Completion:
+        {{ profileProgress }} %</span>
+    </div>
+    <div class="progress my-4">
+      <div class="progress-bar bg-success" role="progressbar" [style.width.%]="profileProgress" aria-valuemin="0"
+        aria-valuemax="100"></div>
+    </div>
+  </div>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <p class="lead labels font-weight-bold text-center">Pro tip: If you want to be
+      visible and increase you chances to
+      get a job, fill up all the profile
+      information.</p>
+  </div>
+
+  <div class="row">
+
+    <!-- profile picture -->
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-2">
+        <img *ngIf="user.profilePictureUrl" class="rounded-circle mt-2" width=150 height=150
+          ngSrc="{{  user.profilePictureUrl  }}" alt="profile picture" data-toggle="modal" data-target="#imgModal">
+
+        <span class="font-weight-bold my-4">{{user.firstName}} {{user.lastName}}</span>
+        <span class="text-black-50">{{user.email}}</span>
+        <span> </span>
+      </div>
+    </div>
+
+    <!-- profile picture edit modal -->
+
+    <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="imgModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content modal-picture">
+          <div class="modal-header border-bottom">
+            <h5 class="modal-title" id="imgModalLabel">Choose profile picture
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="mt-5 mb-5 text-center">
+            <input type="file" (change)="onFileSelected($event)" />
+          </div>
+          <div class="text-center">
+            <button (click)="onUpload()" class="btn btn-primary profile-button" type="button" data-toggle="modal"
+              data-target="#imgModal">Upload picture
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- profile picture edit modal -->
+
+    <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="imgModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content modal-picture">
+          <div class="modal-header border-bottom">
+            <h5 class="modal-title" id="imgModalLabel">Choose profile picture
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="mt-5 mb-5 text-center">
+            <input type="file" (change)="onFileSelected($event)" />
+          </div>
+          <div class="text-center">
+            <button (click)="onUpload()" class="btn btn-primary profile-button" type="button" data-toggle="modal"
+              data-target="#imgModal">Upload picture
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- profile settings -->
+
+    <div class="col-md-5 border-right">
+
+      <div class="p-3 py-5">
+
+        <form name="form" (ngSubmit)="updateUser()" novalidate>
+
+          <!-- basic profile info -->
+
+          <p class="lead mt-4 border-bottom font-weight-bold">Basic Info</p>
+
+          <div class="row mt-2">
+            <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control"
+                [(ngModel)]="user.firstName" name="firstName" placeholder="first name" value="">
+            </div>
+            <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control"
+                [(ngModel)]="user.lastName" name="lastName" value="" placeholder="last name"></div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <label class="labels">Year of birth</label><input type="number" class="form-control"
+                [(ngModel)]="user.yearOfBirth" name="yearOfBirth" placeholder="enter year" value="">
+            </div>
+          </div>
+
+          <!-- personality settings -->
+
+          <p class="lead mt-4 border-bottom font-weight-bold">Personality</p>
+
+          <p class="lead mt-4 font-weight-bold">16 Personalities <a href="/16personalities"><i
+                class="bi bi-question-circle" title="16 Personalities Test"></i></a></p>
+          <div class="row mt-2">
+            <div class="col-md-12">
+
+              <div class="d-flex justify-content-start">
+                <select class="btn btn-outline-primary dropdown-toggle mt-2 mr-2" aria-label="Default select example"
+                  (change)="onPersonalitySelect($event)">
+                  <option selected>Choose personality</option>
+                  <option *ngFor="let personality of personalities" [value]="personality.id">{{personality.name}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="d-flex justify-content-start">
+                <a href="https://www.16personalities.com/" class="btn btn-outline-primary mt-2 mr-2" role="button"
+                  aria-disabled="true">Test Here</a>
+              </div>
+            </div>
+          </div>
+
+          <p class="lead mt-4 font-weight-bold">True Color Personality <a href="/color-personality-test"><i
+                class="bi bi-question-circle" title="True Color Personality Test"></i></a></p>
+          <div class="row mt-2">
+            <div class="col-md-12">
+
+              <div class="d-flex justify-content-start">
+                <select class="btn btn-outline-primary dropdown-toggle mt-2 mr-2" aria-label="Default select example"
+                  (change)="onColorPersonalitySelect($event)">
+                  <option selected>Choose personality</option>
+                  <option *ngFor="let colorPersonality of colorPersonalities" [value]="colorPersonality.id">
+                    {{colorPersonality.name}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="d-flex justify-content-start">
+                <a href="https://my-personality-test.com/" class="btn btn-outline-primary mt-2 mr-2" role="button"
+                  aria-disabled="true">Test Here</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- additional setting (phone, location, about) -->
+
+          <p class="lead mt-4 border-bottom font-weight-bold">Contacts & About</p>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="labels">Phone Number</label>
+              <input type="text" class="form-control" placeholder="enter phone number" [(ngModel)]="user.phone"
+                name="phone" value="">
+            </div>
+
+            <div class="col-md-12">
+              <label class="labels">One Line About</label>
+              <textarea type="text" class="form-control preformatted-text" [(ngModel)]="user.oneLineAbout"
+                name="oneLineAbout" placeholder="Describe yourself in one line..." cols="30" rows="2"></textarea>
+            </div>
+
+            <div class="col-md-12">
+              <label class="labels">About</label>
+              <textarea type="text" class="form-control preformatted-text" [(ngModel)]="user.about" name="about"
+                placeholder="write something about you..." cols="30" rows="5"></textarea>
+            </div>
+          </div>
+
+          <!-- fun facts -->
+
+          <p class="lead mt-4 border-bottom font-weight-bold">Fun Facts</p>
+          <p class="lead mt-4 font-weight-bold">Spirit Animal <a href="/spirit-animal"><i class="bi bi-question-circle"
+                title="Spirit Animal"></i></a>
+          </p>
+          <div class="row mt-2">
+            <div class="col-md-12">
+
+              <div class="d-flex justify-content-start">
+                <select class="btn btn-outline-primary dropdown-toggle mt-2 mr-2" aria-label="Default select example"
+                  (change)="onSpiritAnimalSelect($event)">
+                  <option selected>Choose Spirit Animal</option>
+                  <option *ngFor="let spiritAnimal of spiritAnimals" [value]="spiritAnimal.id">{{spiritAnimal.name}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="d-flex justify-content-start">
+                <a href="https://themindfool.com/spirit-animal-list/" class="btn btn-outline-primary mt-2 mr-2"
+                  role="button" aria-disabled="true">Test Here</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- options (save profile, change password, go back) -->
+
+          <div class="mt-5 text-center">
+            <button class="btn btn-primary profile-button my-2 mx-2" type="button" data-toggle="modal"
+              data-target="#addModal">Save Profile
+            </button>
+            <a routerLink="/change-password" class="btn btn-outline-primary my-2 mx-2" role="button"
+              aria-disabled="true">Change Password</a>
+            <a routerLink="/" class="btn btn-outline-secondary my-2 mx-2" role="button" aria-disabled="true">Leave</a>
+          </div>
+
+          <!-- save profile modal -->
+
+          <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content modal-save">
+
+                <div class="modal-header border-bottom">
+                  <h5 class="modal-title" id="addModalLabel">Are you sure?
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="mt-5 mb-2 text-center">
+                  <p class="lead">Do you want to update your profile?</p>
+                </div>
+                <div class="text-center">
+                  <button class="btn btn-primary profile-button" type="submit" data-toggle="modal"
+                    data-target="#addModal">Save profile
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="p-3 py-5">
+
+        <!-- work preferences -->
+
+        <p class="lead mt-4 border-bottom font-weight-bold">Work Preferences</p>
+
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">Preferred Work Location</label>
+
+            <!-- work location setting -->
+
+            <div class="d-flex justify-content-between align-items-center experience my-2"><span>Edit
+                Work Locations</span>
+              <button class="btn border px-3 p-1 add-experience" (click)="unusedLocationsHandle()" type="button"
+                data-toggle="modal" data-target="#locationsModal"><i class="fa fa-plus"></i>&nbsp;Locations
+              </button>
+            </div>
+
+            <!-- work location modal -->
+
+            <div class="modal fade" id="locationsModal" tabindex="-1" role="dialog"
+              aria-labelledby="locationsModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <div class="allTechnologies">
+                      <h5 class="modal-title mb-3">Select your Work Location </h5>
+                      <input type="search" (ngModelChange)="searchLocation(keyLoc.value)" #keyLoc="ngModel" ngModel
+                        name="key" class="form-control form-control-dark text-bg-dark" placeholder="Search location..."
+                        aria-label="Search">
+                      <app-location-button *ngFor="let location of unusedLocations" [location]="location"
+                        [unusedLocations]="unusedLocations" [userLocations]="userLocations"
+                        (locationComponentEmitter)="handleLocationComponentEmitter($event)"></app-location-button>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+
+                  </div>
+
+                  <div class="modal-header">
+                    <div class="myTechnologies">
+                      <h5 class="modal-title mb-3">Your Locations</h5>
+                      <app-location-button *ngFor="let location of userLocations" [location]="location"
+                        [unusedLocations]="unusedLocations" [userLocations]="userLocations"
+                        (locationComponentEmitter)="handleLocationComponentEmitter($event)">
+                      </app-location-button>
+                    </div>
+                  </div>
+
+                  <div class="text-center">
+                    <button class="btn btn-primary profile-button" type="button" data-dismiss="modal"
+                      aria-label="Close">Done
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <label class="labels">Work Preference</label>
+
+            <div class="list-group">
+              <label class="list-group-item d-flex gap-2 pl-5" for="officeRadio">
+                <input class="form-check-input flex-shrink-0" type="radio" name="workPreference" value="OFFICE"
+                  [(ngModel)]="user.workPreference" (ngModelChange)="onWorkPreferenceChange()" id="officeRadio">
+                <span>
+                  Office
+                  <small class="d-block text-body-secondary">I prefer working from office.</small>
+                </span>
+              </label>
+              <label class="list-group-item d-flex gap-2 pl-5" for="remoteRadio">
+                <input class="form-check-input flex-shrink-0" type="radio" name="workPreference" value="REMOTE"
+                  [(ngModel)]="user.workPreference" (ngModelChange)="onWorkPreferenceChange()" id="remoteRadio">
+                <span>
+                  Remote
+                  <small class="d-block text-body-secondary">I prefer working from Home.</small>
+                </span>
+              </label>
+              <label class="list-group-item d-flex gap-2 pl-5" for="combinedRadio">
+                <input class="form-check-input flex-shrink-0" type="radio" name="workPreference" value="COMBINED"
+                  [(ngModel)]="user.workPreference" (ngModelChange)="onWorkPreferenceChange()" id="combinedRadio">
+                <span>
+                  Combined
+                  <small class="d-block text-body-secondary">I'd like to work partly from office and partly from
+                    home.</small>
+                </span>
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- social media settings -->
+
+        <p class="lead mt-4 border-bottom font-weight-bold">Social Media</p>
+
+        <div class="row">
+
+          <div class="col-md-12"><label class="labels">Github</label><input type="text" class="form-control"
+              [(ngModel)]="user.gitHub" name="github" placeholder="Github" value=""></div>
+          <div class="col-md-12"><label class="labels">LinkedIn</label><input type="text" class="form-control"
+              [(ngModel)]="user.linkedin" name="linkedin" placeholder="LinkedIn" value=""></div>
+          <div class="col-md-12"><label class="labels">Facebook</label><input type="text" class="form-control"
+              [(ngModel)]="user.facebook" name="facebook" placeholder="Facebook" value=""></div>
+          <div class="col-md-12"><label class="labels">Instagram</label><input type="text" class="form-control"
+              [(ngModel)]="user.instagram" name="instagram" placeholder="Instagram" value="">
+          </div>
+          <div class="col-md-12"><label class="labels">Your Webpage</label><input type="text" class="form-control"
+              [(ngModel)]="user.optionalPage" name="optionalPage" placeholder="Your Webpage" value="">
+          </div>
+        </div>
+
+        <!-- skills & languages setting -->
+
+        <p class="lead mt-4 border-bottom font-weight-bold">Edits</p>
+        <div class="d-flex justify-content-between align-items-center experience my-2"><span>Edit
+            Skills</span>
+          <button class="btn border px-3 p-1 add-experience" (click)="unusedTechnologiesHandle()" type="button"
+            data-toggle="modal" data-target="#skillsModal"><i class="fa fa-plus"></i>&nbsp;Skill
+          </button>
+        </div>
+
+        <!-- skills settings modal -->
+
+        <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog" aria-labelledby="skillsModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="allTechnologies">
+                  <h5 class="modal-title mb-3">Select your skill </h5>
+                  <input type="search" (ngModelChange)="searchTechnology(keyTech.value)" #keyTech="ngModel" ngModel
+                    name="key" class="form-control form-control-dark text-bg-dark" placeholder="Search technology..."
+                    aria-label="Search">
+                  <app-technology-button *ngFor="let technology of unusedTechnologies" [technology]="technology"
+                    [unusedTechnologies]="unusedTechnologies" [userTechnologies]="userTechnologies"
+                    (technologyComponentEmitter)="handleTechnologyComponentEmitter($event)"></app-technology-button>
+                </div>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+
+              </div>
+
+              <div class="modal-header">
+                <div class="myTechnologies">
+                  <h5 class="modal-title mb-3">Your Skills</h5>
+                  <app-technology-button *ngFor="let technology of userTechnologies" [technology]="technology"
+                    [unusedTechnologies]="unusedTechnologies" [userTechnologies]="userTechnologies"
+                    (technologyComponentEmitter)="handleTechnologyComponentEmitter($event)"></app-technology-button>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button class="btn btn-primary profile-button" type="button" data-dismiss="modal"
+                  aria-label="Close">Done
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- languages settings -->
+
+        <div class="d-flex justify-content-between align-items-center experience my-2"><span>Edit
+            languages</span>
+          <button class="btn border px-3 p-1 add-experience" (click)="unusedLanguagesHandle()" type="button"
+            data-toggle="modal" data-target="#languagesModal"><i class="fa fa-plus"></i>&nbsp;Language
+          </button>
+        </div>
+
+        <!-- languages settings modal -->
+
+        <div class="modal fade" id="languagesModal" tabindex="-1" role="dialog" aria-labelledby="languagesModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="allTechnologies">
+                  <h5 class="modal-title mb-3" id="languagesModalLabel">Languages</h5>
+                  <input type="search" (ngModelChange)="searchLanguage(keyLang.value)" #keyLang="ngModel" ngModel
+                    name="key" class="form-control form-control-dark text-bg-dark"
+                    placeholder="Search by name or technology..." aria-label="Search">
+
+                  <app-language-button *ngFor="let language of unusedLanguages" [language]="language"
+                    [unusedLanguages]="unusedLanguages" [userLanguages]="userLanguages"
+                    (languageComponentEmitter)="handleLanguageComponentEmitter($event)"></app-language-button>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-header">
+                <div class="myTechnologies">
+                  <h5>Your Languages</h5>
+                  <app-language-button *ngFor="let language of userLanguages" [language]="language"
+                    [unusedLanguages]="unusedLanguages" [userLanguages]="userLanguages"
+                    (languageComponentEmitter)="handleLanguageComponentEmitter($event)"></app-language-button>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button class="btn btn-primary profile-button" type="button" data-dismiss="modal"
+                  aria-label="Close">Done
+
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- delete profile btn -->
+
+        <div class="mt-5 text-center">
+          <button class="btn btn-danger profile-button profile-delete-btn" type="button" data-toggle="modal"
+            data-target="#exampleModal">Delete
+            Profile
+          </button>
+        </div>
+
+        <!-- delete profile modal -->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content modal-delete">
+              <div class="modal-header border-bottom">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure?
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="mt-5 text-center">
+                <p class="lead">Do you really want to delete this profile?</p>
+                <p class="lead">This action can't be undone.</p>
+              </div>
+              <div class="text-center">
+                <button (click)="deleteAccount()" class="btn btn-danger profile-button profile-delete-btn" type="button"
+                  data-toggle="modal" data-target="#exampleModal">Delete
+                  Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

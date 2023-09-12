@@ -1,0 +1,19 @@
+.text-body-secondary {
+    margin-right: .5rem;
+}
+
+form {
+    border-radius: 5px;
+    -webkit-box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 25px -4px rgba(0, 0, 0, 0.75);
+}
+
+h1 {
+    font-weight: bolder;
+}
+
+img {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}   

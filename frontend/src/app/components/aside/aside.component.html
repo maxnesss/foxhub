@@ -1,0 +1,17 @@
+<aside>
+  <div class="card mb-3">
+    <div class="card-body text-center">
+      <p class="lead text-center all-people-desktop">Search by name or technology</p>
+
+      <i class="fas mb-4" [ngClass]="{'fa-chevron-down': !showPeople, 'fa-chevron-up': showPeople}"
+         (click)="togglePeople()"></i>
+
+      <div *ngIf="showPeople">
+        <app-aside-search-bar class="all-people-desktop"
+                              [fullUsers]="verifiedUsers"
+                              [searchedUsers]="verifiedUsers"
+        ></app-aside-search-bar>
+      </div>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,115 @@
+AGE FILTER :
+
+
+TS:
+
+selectedAges: string[] = [];
+actualAgeValue: string = '';
+restAgeFilter: User[] = [];
+
+  addToAgeList(event: any, age: string) {
+    if (event.target.checked) {
+      if (!this.selectedAges.includes(age)) {
+        this.selectedAges.push(age);
+      }
+    } else {
+      const index = this.selectedAges.indexOf(age);
+      if (index > -1) {
+        this.selectedAges.splice(index, 1);
+      }
+    }
+    this.allFilters();
+  }
+
+ageFilter(users: User[]) {
+    const currentYear = new Date().getFullYear();
+    let actualFilteredUsers: User[] = [];
+    this.restAgeFilter = [];
+
+    for (let user of users) {
+      // @ts-ignore
+      const age = currentYear - user.yearOfBirth;
+      { // @ts-ignore
+        for (let ageValue of this.selectedAges) {
+          if (ageValue === "18" && (age >= 18 && age <= 25)) {
+            if (!actualFilteredUsers.includes(user)) {
+              actualFilteredUsers.push(user)
+            }
+          }
+          if (ageValue === "25" && (age >= 25 && age <= 30)) {
+            if (!actualFilteredUsers.includes(user)) {
+              actualFilteredUsers.push(user)
+            }
+          }
+          if (ageValue === "30" && (age >= 30 && age <= 35)) {
+            if (!actualFilteredUsers.includes(user)) {
+              actualFilteredUsers.push(user)
+            }
+          }
+          if (ageValue === "35" && (age >= 35 && age <= 40)) {
+            if (!actualFilteredUsers.includes(user)) {
+              actualFilteredUsers.push(user)
+            }
+          }
+          if (ageValue === "40" && age >= 40) {
+            if (!actualFilteredUsers.includes(user)) {
+              actualFilteredUsers.push(user)
+            }
+          }
+        }
+      }
+    }
+
+    this.actualAgeValue = "age"
+    this.restAgeFilter = this.verifiedAndUsersOnly
+      .filter(user => !actualFilteredUsers.includes(user));
+    return actualFilteredUsers;
+}
+
+
+if (this.selectedAges.length > 0) {
+      filteredUsers = this.ageFilter(filteredUsers);
+    }
+
+if (this.selectedAges.length === 0) {
+        this.restAgeFilter = [];
+      }
+      if (this.restAgeFilter.includes(user)) {
+        user.outOfFilters.push(this.actualAgeValue);
+      }
+
+this.selectedAges = [];
+
+HTML:
+
+ <p class="lead mt-4 border-bottom lead-bold">Age</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="18" id="18" (change)="addToAgeList($event,'18')">
+                <label class="form-check-label" for="18">
+                  18 - 25
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="25" id="25" (change)="addToAgeList($event,'25')">
+                <label class="form-check-label" for="25">
+                  25 - 30
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="30" id="30" (change)="addToAgeList($event,'30')">
+                <label class="form-check-label" for="30">
+                  30 - 35
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="35" id="35" (change)="addToAgeList($event,'35')">
+                <label class="form-check-label" for="35">
+                  35 - 40
+                </label>
+              </div>
+              <div class="form-check mb-5">
+                <input class="form-check-input" type="checkbox" value="40" id="40" (change)="addToAgeList($event,'40')">
+                <label class="form-check-label" for="40">
+                  40 +
+                </label>
+              </div>

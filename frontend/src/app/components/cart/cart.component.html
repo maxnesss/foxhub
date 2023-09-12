@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<app-back-to-top-btn></app-back-to-top-btn>
+
+<div class="container">
+  <div class="row w-100">
+    <div class="col-lg-12 col-md-12 col-12">
+
+      <h1 class="display-5 my-4 text-center page-header">Chosen Ones</h1>
+
+      <div *ngIf="cartItems.length === 0; else usersList" class="d-flex flex-column align-items-center">
+        <p class="lead my-4 text-center">Your cart is empty.</p>
+        <p class="lead my-4 text-center">Find a perfect match for you!</p>
+        <a routerLink="/" class="btn btn-outline-primary px-4 me-md-2" role="button" aria-disabled="true">People</a>
+      </div>
+
+      <ng-template #usersList>
+        <table id="shoppingCart" class="table table-condensed">
+          <thead>
+            <tr>
+              <th style="width:60%">Person</th>
+              <th style="width:30%">Character</th>
+              <th style="width:10%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <app-card *ngFor="let user of cartItems" [user]="user"></app-card>
+          </tbody>
+        </table>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="row mt-4 d-flex align-items-center">
+
+    <div class="col-sm-6 mb-3 order-md-2 d-flex justify-content-center justify-content-md-start">
+      <a routerLink="/" class="btn btn-outline-primary btn-lg mr-2" role="button" aria-disabled="true">Back
+        to People</a>
+    </div>
+
+    <div class="col-sm-6 order-md-2 d-flex justify-content-center justify-content-md-end">
+      <a routerLink="/checkout" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

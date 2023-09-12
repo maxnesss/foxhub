@@ -1,0 +1,6 @@
+<input type="search" (ngModelChange)="searchUser(key.value)" #key="ngModel" ngModel name="key"
+       class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+
+<div class="card-deck">
+  <app-aside-user-card *ngFor="let user of searchedUsers" [user]="user"></app-aside-user-card>
+</div>

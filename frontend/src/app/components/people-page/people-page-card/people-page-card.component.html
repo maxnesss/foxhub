@@ -1,0 +1,115 @@
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" [id]="'heading-' + user.nickname" data-toggle="collapse"
+         [attr.data-target]="'#collapse-' + user.nickname" [attr.aria-controls]="'collapse-' + user.nickname"
+         aria-expanded="false">
+
+      <div class="card-body-top">
+        <div class="left-side">
+
+          <!-- open profile in a new window - just add - target="_blank" - into <a> element -->
+          <a [routerLink]="['/', user.nickname]" class="profile-img-desktop mr-4"
+             [ngStyle]="{ 'border': profileImageBorder(user.colorPersonality) }" target="_blank">
+            <img *ngIf="user.profilePictureUrl" [src]="user.profilePictureUrl" height="100" width="100"
+                 alt="profile_picture" class="img-fluid d-md-block shadow">
+          </a>
+          <h4 class="py-2">
+            {{ user.firstName }}
+            <p class="lead mb-0" *ngFor="let location of user.locations">{{ location.name }} &nbsp;</p>
+          </h4>
+        </div>
+
+        <div class="right-side">
+          <a [routerLink]="['/', user.nickname]" class="btn btn-outline-primary visit-profile">Visit
+            Profile </a>
+          <button class="btn btn-outline-primary" type="button" (click)="toggleItem($event, user)">
+                        <span *ngIf="user.inCart">
+                            <i class="bi bi-cart4"></i> In Cart
+                        </span>
+            <audio #audioPlayer>
+            </audio>
+            <span *ngIf="!user.inCart">
+                            Add to Cart
+                        </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card-body-bottom mt-2">
+        <p *ngFor="let filter of user.outOfFilters"><span>{{filter}}</span> &nbsp;</p>
+      </div>
+    </div>
+
+    <div [id]="'collapse-' + user.nickname" class="collapse" [attr.aria-labelledby]="'heading-' + user.nickname"
+         data-parent="#accordion">
+
+      <div class="card-body">
+
+        <div class="card-body-left">
+
+          <h4 class="mb-4">{{ user.firstName }} {{ user.lastName }}</h4>
+
+          <label class="labels">About</label>
+          <p class="lead">{{user.oneLineAbout}}</p>
+
+          <label class="labels">Preferred Work Location(s)</label>
+          <div class="row mt-2">
+            <div class="col-md-12 d-flex flex-wrap">
+              <app-location *ngFor="let location of user.locations" [location]="location"></app-location>
+            </div>
+          </div>
+
+          <label class="labels">Preferred Work Option</label>
+          <div>
+
+            <ng-container *ngIf="user.workPreference === 'OFFICE'">
+              <p class="lead">Office - I'd like to work from the office.</p>
+            </ng-container>
+
+            <ng-container *ngIf="user.workPreference === 'REMOTE'">
+              <p class="lead">Remote - I'd like to work from home.</p>
+            </ng-container>
+
+            <ng-container *ngIf="user.workPreference === 'COMBINED'">
+              <p class="lead">Combined - I'd like to work partly from the office and partly from home. Or I don't have
+                the work preference.</p>
+            </ng-container>
+
+            <ng-container
+              *ngIf="user.workPreference !== 'OFFICE' && user.workPreference !== 'REMOTE' && user.workPreference !== 'COMBINED'">
+              <p class="lead">Work preference is not set. </p>
+            </ng-container>
+
+          </div>
+
+          <label class="labels">16 Personalities</label>
+          <p class="lead ">{{user.personality?.name}} - {{user.personality?.description}}</p>
+
+          <label class="labels">True Color Personality</label>
+          <p class="lead ">{{user.colorPersonality?.name}} - {{user.colorPersonality?.description}}</p>
+
+          <label class="labels">Spirit Animal</label>
+          <p class="lead">{{user.spiritAnimal?.name}} - {{user.spiritAnimal?.description}}</p>
+
+          <label class="labels">Tech Skills</label>
+          <div class="row mt-2">
+            <div class="col-md-12 d-flex flex-wrap">
+              <app-technologies *ngFor="let technology of user.technologies" [technology]="technology">
+              </app-technologies>
+            </div>
+          </div>
+
+          <label class="labels">Languages</label>
+          <div class="row mt-2">
+            <div class="col-md-12 d-flex flex-wrap">
+              <app-language *ngFor="let language of user.languages" [language]="language">
+              </app-language>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

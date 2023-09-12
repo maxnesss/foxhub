@@ -1,0 +1,210 @@
+<app-header></app-header>
+
+<app-back-to-top-btn></app-back-to-top-btn>
+
+<div class="container col-xxl-8 px-3">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-1">
+
+
+    <div class="container col-xxl-8 px-3 mb-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-1">
+
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img ngSrc="/assets/img/online.png" class="d-block mx-lg-auto img-fluid" alt="Coder" width="500" height="400"
+               loading="lazy">
+        </div>
+
+        <div class="col-lg-6 md-5">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3 page-header">Welcome to <span>Fox</span>Hub</h1>
+          <p class="lead">The ultimate platform connecting individuals within
+            the dynamic world of IT. </p>
+          <p class="lead">Designed exclusively for the vibrant community of <b>Green Fox Academy</b>, this app bridges
+            the gap between talented students, aspiring developers, and eager headhunters.</p>
+          <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Join the <span>Fox</span>Hub today and
+            take
+            the IT world
+            by storm!</h2>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a routerLink="/main" class="btn btn-primary btn-lg px-4 me-md-2" role="button"
+               aria-disabled="true">Visit</a>
+            <a routerLink="/login" class="btn btn-outline-secondary btn-lg" role="button" aria-disabled="true"
+               *ngIf="!isLoggedIn">Login</a>
+            <a routerLink="/register" class="btn btn-outline-secondary btn-lg" role="button" aria-disabled="true"
+               *ngIf="!isLoggedIn">Sign up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- swiper chevron -->
+
+    <app-swiper-arrow></app-swiper-arrow>
+
+    <!-- icon grid -->
+
+    <div class="container px-4 py-5 mt-5" id="icon-grid">
+      <h2 class="pb-2 border-bottom"><span>Fox</span>Hub Perks</h2>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+
+        <div class="col d-flex align-items-start feature-icons">
+          <i class="bi bi-cart4 flex-shrink-0 me-3" width="1.75em" height="1.75em"></i>
+          <div>
+            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Coworkers Match </h3>
+            <p>Find a perfect match for your work environment. Put the candidates into the cart, send a request and fill
+              the gap! </p>
+          </div>
+        </div>
+
+        <div class="col d-flex align-items-start feature-icons">
+          <i class="bi bi-braces flex-shrink-0 me-3" width="1.75em" height="1.75em"></i>
+          <div>
+            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Wide & Unique Characters </h3>
+            <p>Team of skilled professionals, carefully selected through a rigorous admissions process, offering a wide
+              range of expertise to suit your every need.</p>
+          </div>
+        </div>
+
+        <div class="col d-flex align-items-start feature-icons">
+          <i class="bi bi-chat-square-dots flex-shrink-0 me-3" width="1.75em" height="1.75em"></i>
+          <div>
+            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Career Networking </h3>
+            <p>Unlock boundless opportunities via career networking, connecting you with a
+              diverse pool of professionals to fuel your professional growth.</p>
+          </div>
+        </div>
+
+        <div class="col d-flex align-items-start feature-icons">
+          <i class="bi bi-cup-straw flex-shrink-0 me-3" width="1.75em" height="1.75em"></i>
+          <div>
+            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">GreenFox Community </h3>
+            <p>Foster a sense of community and collaboration within GreenFox Academy. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- about app -->
+
+    <div class="container col-xxl-8 px-4 py-3 my-4">
+      <div class="row flex-lg-row align-items-center g-5 py-3">
+
+        <div class="col-10 col-sm-8 col-lg-6">
+
+          <img ngSrc="/assets/img/connected.png" class="d-block mx-lg-auto img-fluid" alt="Build" width="700"
+               height="500" loading="lazy">
+
+        </div>
+
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Be <span>Fox</span>Hub</h1>
+          <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Discover Your Limitless Potential! </h2>
+          <p class="lead">Craft an irresistible profile that catches the eye of headhunters, launching your path to
+            <b>success</b>. At the same time, connect with inspiring mentors and like-minded individuals, propelling
+            your
+            career to extraordinary heights. Join <span>Fox</span>Hub now and embrace a world of endless opportunities!
+          </p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+
+            <a routerLink="/" class="btn btn-primary btn-lg px-4 me-md-2" role="button" aria-disabled="true">Take a
+              look inside</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- introduction -->
+
+    <div class="container col-xxl-8 px-4 py-4 my-4">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-4">
+
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img ngSrc="/assets/img/digitalPresentation.png" class="d-block mx-lg-auto img-fluid" alt="Rating" width="700"
+               height="500" loading="lazy">
+        </div>
+
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Introducing <span>Fox</span>Hub</h1>
+          <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Empowering your Career, Mentorship, and Talent
+            Acquisition Journey</h2>
+          <p class="lead">For <b>students</b>, FoxHub is digital companion throughout your career journey.</p>
+          <p class="lead">For <b>mentors</b>, FoxHub is arena to guide and inspire the next generation of tech
+            enthusiasts.</p>
+          <p class="lead">For <b>headhunters</b> seeking top talent, FoxHub is treasure trove of potential.</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a routerLink="/main" class="btn btn-primary btn-lg px-4 me-md-2" role="button" aria-disabled="true">Show
+              community</a>
+            <a routerLink="/creators" class="btn btn-outline-primary btn-lg px-4 me-md-2" role="button"
+               aria-disabled="true">Dev Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- search intro -->
+
+    <div class="container col-xxl-8 px-4 py-4 my-4">
+      <div class="row flex-lg-row align-items-center g-5 py-4">
+
+        <div class="col-10 col-sm-8 col-lg-6">
+
+          <img ngSrc="/assets/img/treasure.png" class="d-block mx-lg-auto img-fluid" alt="Launch" width="700"
+               height="500" loading="lazy">
+
+        </div>
+
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Find the <span>Perfect Match</span> for You!</h1>
+          <p class="lead">Do it in <b>style</b> & <b>fun</b>. </p>
+          <p class="lead">Filter by technology, personality and more. </p>
+          <p class="lead">Find the Spirit Animal or Donut Filling that your Team needs. </p>
+          <p class="lead">All you need to do is just <b>filter</b> & <b>choose</b> the right person for your needs. Like
+            casual online shopping. But this time you choose people.</p>
+          <p class="lead"> People you <b>need</b>.</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="/" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Find Best
+              Match</a>
+
+            <a routerLink="/16personalities" class="btn btn-outline-primary btn-lg" role="button"
+              aria-disabled="true">16 Personalities</a>
+            <a routerLink="/color-personality-test" class="btn btn-outline-primary btn-lg" role="button"
+              aria-disabled="true">True Color Personality</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end text -->
+
+    <div class="container col-xxl-8 px-4 py-4 my-4">
+      <div class="row flex-lg-row align-items-center g-5 py-4">
+
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Be One of <span>Us</span>!</h1>
+          <p class="lead">At FoxHub, we understand that success in the IT world is not just about what you know; it's
+            about who you know. </p>
+          <p class="lead">Together, let's unleash the potential within us and <b>make waves in the exciting world of
+            IT</b>.
+            FoxHub awaits you with open arms, ready to empower, connect, and transform.</p>
+          <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Welcome to the future of IT networking. </h2>
+          <h2 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Welcome to
+            <span>Fox</span>Hub.
+          </h2>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start" *ngIf="!isLoggedIn">
+            <a routerLink="/login" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Login</a>
+            <a routerLink="/register" class="btn btn-outline-secondary btn-lg" role="button" aria-disabled="true">Sign
+              up</a>
+          </div>
+        </div>
+
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img ngSrc="/assets/img/projectRocket.png" class="d-block mx-lg-auto img-fluid" alt="Launch" width="700"
+               height="500" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 text-center">
+      <p class="lead mb-4">Find your colleague, mentor, student.</p>
+      <p class="lead mb-4">The choice is all yours.</p>
+      <form class="mb-3" role="search">
+        <div class="input-group">
+          <input type="search" (ngModelChange)="searchUser(key.value)" #key="ngModel" ngModel name="key"
+            class="form-control form-control-dark text-bg-dark" placeholder="Search by name or technology..."
+            aria-label="Search">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="card-deck">
+  <app-people-page-card *ngFor="let user of users" [user]="user"></app-people-page-card>
+</div>

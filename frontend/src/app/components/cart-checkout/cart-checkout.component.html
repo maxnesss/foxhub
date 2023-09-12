@@ -1,0 +1,149 @@
+<app-header></app-header>
+
+<app-back-to-top-btn></app-back-to-top-btn>
+
+<div class="container">
+
+  <div class="py-5 text-center">
+    <h1 class="page-header">Checkout</h1>
+    <p class="lead">Thank you for choosing FoxHub!</p>
+  </div>
+
+  <div class="row g-5 mb-4">
+
+    <div class="col-md-5 col-lg-4 order-md-last">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-primary">People to contact</span>
+        <span class="badge bg-primary rounded-pill">{{cartItems.length}}</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-sm" *ngFor="let user of cartItems">
+          <div>
+            <h6 class="my-0">{{user.firstName}} {{user.lastName}}</h6>
+            <small class="text-body-secondary">{{user.oneLineAbout}}</small>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-7 col-lg-8">
+
+      <h4 class="mb-3">Info</h4>
+
+      <!--Form-->
+
+      <form #contactForm="ngForm" name="form needs-validation" (ngSubmit)="sendForm(contactForm)" novalidate>
+
+        <div class="row g-3">
+
+          <div class="col-sm-6 mt-4">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="your name" value="" ngModel
+              required>
+            <div class="invalid-feedback">
+              Valid name is required.
+            </div>
+          </div>
+
+          <div class="col-sm-6 mt-4">
+            <label for="email" class="form-label">Email </label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" ngModel
+              required>
+            <div class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="phone" class="form-label">Phone Number </label>
+            <input type="number" class="form-control" id="phone" placeholder="your phone number" name="phone" ngModel
+              required>
+            <div class="invalid-feedback">
+              Please enter a valid phone number.
+            </div>
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="company" class="form-label">Company</label>
+            <input type="text" class="form-control" id="company" placeholder="your company" name="company" ngModel
+              required>
+            <div class="invalid-feedback">
+              Please enter your Company.
+            </div>
+          </div>
+
+          <div class="col-sm-6 mt-4">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" class="form-control" id="country" placeholder="your country" value="" name="country"
+              ngModel required>
+            <div class="invalid-feedback">
+              Valid Country is required.
+            </div>
+          </div>
+
+          <div class="col-sm-6 mt-4">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" placeholder="your city" value="" name="city" ngModel
+              required>
+            <div class="invalid-feedback">
+              Valid City is required.
+            </div>
+          </div>
+
+        </div>
+
+        <hr class="my-4">
+
+        <h4 class="mb-3">Message</h4>
+
+        <div class="col-12 mt-4">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" name="message" id="message" cols="30" rows="5" placeholder="your message..."
+            ngModel required></textarea>
+          <div class="invalid-feedback">
+            Please enter message.
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <a routerLink="/cart" class="btn btn-outline-primary btn-lg mr-2" role="button" aria-disabled="true">Back to
+          Cart</a>
+        <button class="btn btn-lg btn-primary profile-button my-2 mx-2" type="button" data-toggle="modal"
+          data-target="#addModal">Contact all
+        </button>
+
+        <!--Modal send-->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content modal-save">
+              <div class="modal-header border-bottom">
+                <h5 class="modal-title" id="addModalLabel">Contact All </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="mt-5 mb-2 text-center">
+                <p class="lead">You are interested in:</p>
+                <p *ngFor="let user of cartItems">{{user.firstName}} {{user.lastName}}</p>
+              </div>
+              <div class="mt-5 mb-2 text-center">
+                <p class="lead">You will be contacted soon by Green Fox Academy</p>
+              </div>
+              <div class="text-center mb-4">
+                <button class="btn btn-primary profile-button" type="submit" data-toggle="modal"
+                  data-target="#addModal">Contact All
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
